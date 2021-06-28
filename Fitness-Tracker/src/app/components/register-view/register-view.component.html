@@ -1,0 +1,46 @@
+<div class="d-flex flex-column justify-content-center align-items-center w-50 h-100 m-auto">
+    <div>
+        <h3>Register</h3>
+    </div>
+
+    <form class="d-flex flex-column justify-content-center align-items-center w-75" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group mb-3 w-100">
+            <input class="form-control" [ngClass]="{'is-invalid': email.touched && email.invalid}" type="email" placeholder="Email" formControlName="email">
+            
+            <div class="alert alert-danger mt-3 w-100" *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors.required">Email is required!</div>
+                <div *ngIf="email.errors.pattern">Email should be valid email(eg: a@a.a) and less than 50 characters!</div>
+            </div>
+        </div>
+
+        <div class="form-group mb-3 w-100">
+            <input class="form-control" [ngClass]="{'is-invalid': username.touched && username.invalid}" type="text" placeholder="Username" formControlName="username">
+            <div class="alert alert-danger mt-3 w-100" *ngIf="username.touched && username.invalid">
+                <div *ngIf="username.errors.required">Username is required!</div>
+                <div *ngIf="username.errors.pattern">Username should be between 4 and 40 characters and contain only letters and numbers!</div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3 w-100">
+            <input type="password" [ngClass]="{'is-invalid': password.touched && password.invalid}" class="form-control" placeholder="Password" formControlName="password">
+
+            <div class="alert alert-danger mt-3 w-100" *ngIf="password.touched && password.invalid">
+                <div *ngIf="password.errors.required">Password is required!</div>
+                <div *ngIf="password.errors.pattern">Password should be between 8 and 32 characters and contain at least 1 upper case letter, 1 lower case letter, 1 number and 1 special symbol!</div>
+            </div>
+        </div>
+
+        <div class="alert alert-danger mb-3 w-100" *ngIf="errorMessage != null">
+            {{errorMessage}}
+        </div>
+
+        <div class="form-group">
+            <button [disabled]="loading || !registerForm.valid" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Register
+            </button>
+            <a routerLink="../login" class="btn btn-link decoration-none">Back To Login</a>
+        </div>
+    </form>
+</div>

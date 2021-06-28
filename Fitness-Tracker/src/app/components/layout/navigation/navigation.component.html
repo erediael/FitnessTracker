@@ -1,0 +1,53 @@
+<nav class="navbar navbar-light border-bottom">
+    
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="[ '/' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <img class="d-inline-block align-text-top" src="../assets/logo.png" alt="FitnessTracker">
+            FitnessTracker
+        </a>
+
+        <ul class="navbar-nav nav-pills nav-fill me-auto">
+            <li class="nav-item" *ngIf="isLogged()">
+                <a class="nav-link" [routerLink]="[ '/calendar', getLoggedUserId() ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                Calendar
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogged()">
+                <a class="nav-link" [routerLink]="[ '/friends' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                Friends
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogged()">
+                <a class="nav-link" [routerLink]="[ '/changePassword' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    Change Password
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav nav-pills nav-fill">
+            <li class="nav-item" *ngIf="!isLogged()">
+                <a class="nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    Login
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="!isLogged()">
+                <a class="nav-link" [routerLink]="[ '/register' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    Register
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="!isLogged()">
+                <a class="nav-link" [routerLink]="[ '/forgotPassword' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    Forgot Password
+                </a>
+            </li>
+
+            <span class="navbar-text" *ngIf="isLogged()">Hi {{ getLoggedUserName() }}</span>
+
+            <li class="nav-item" *ngIf="isLogged()">
+                <a class="nav-link cursor-pointer" (click)="logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

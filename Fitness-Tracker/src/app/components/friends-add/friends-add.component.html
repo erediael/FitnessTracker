@@ -1,0 +1,13 @@
+<div class="d-flex flex-column justify-content-center align-items-center w-50 h-100 m-auto">
+    <h3 class="mb-3">Do you want to accept this friendship?</h3>
+    <div class="d-flex">
+        <button [disabled]="loading" class="btn btn-primary me-3" (click)="accept()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Accept
+        </button>
+        <button [disabled]="loading" class="btn btn-danger" (click)="cancel()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Cancel
+        </button>
+    </div>
+</div>

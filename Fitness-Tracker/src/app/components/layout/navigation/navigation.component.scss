@@ -1,0 +1,20 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #EEE;
+}
+
+.nav-link {
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.navbar-brand {
+    max-width: 30%;
+}

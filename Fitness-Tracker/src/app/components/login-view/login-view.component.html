@@ -1,0 +1,38 @@
+<div class="d-flex flex-column justify-content-center align-items-center h-100 w-50 m-auto">
+    <div>
+        <h3>Login</h3>
+    </div>
+
+    <form class="d-flex flex-column justify-content-center align-items-center w-75" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group mb-3 w-100">
+            <input class="form-control" type="text" placeholder="Email" formControlName="email">
+
+            <div class="alert alert-danger mt-3 w-100" *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors.required">Email is required!</div>
+                <div *ngIf="email.errors.pattern">Email should be valid email(eg: a@a.a)!</div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3 w-100">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+
+            <div class="alert alert-danger mt-3 w-100" *ngIf="password.touched && password.invalid">
+                <div *ngIf="password.errors.required">Password is required!</div>
+            </div>
+        </div>
+
+        <div class="alert alert-danger mb-3 w-100" *ngIf="errorMessage != null">
+            {{errorMessage}}
+        </div>
+
+        <div class="form-group">
+            <button [disabled]="loading || !loginForm.valid" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+            </button>
+            <a routerLink="../register" class="btn btn-link decoration-none">Register</a>
+            <a routerLink="../forgotPassword" class="btn btn-link decoration-none">Forgot Password</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<div class="d-flex flex-column h-100">
+    <div class="text-center my-3">
+        <span>Add friends using this link</span>
+        <div>{{ inviteLink }}</div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center" *ngIf="friends.length === 0 else friendsTmpl">
+        Sadly you have no friends, use the link above to add some
+    </div>
+</div>
+
+<ng-template #friendsTmpl>
+    <div class="d-flex mx-3" *ngFor="let friend of friends">
+        <div class="card w-25">
+            <div class="card-body">
+                <h5 class="card-title">Email: {{ friend.friendEmail }}</h5>
+                <h5 class="card-title">Username: {{ friend.friendUsername }}</h5>
+                <a class="btn btn-primary" [routerLink]="[ '/calendar', friend.friendId ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    View Calendar
+                </a>
+            </div>
+          </div>
+    </div>
+</ng-template>
